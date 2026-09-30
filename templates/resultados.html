@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Usuarios!</title>
+</head>
+<body>
+    <a href="/" class="btn btn-info btn-outline-primary" >Inicio</a>
+    <div class="d-flex justify-content-around flex-wrap p-5">
+
+        {% for usuario in todos_usuarios %}
+            <div class="card col-3 border">
+                <div class="card-body">
+                    <h2 class="card-title text-primary">
+                        Usuario {{usuario['id']}}
+                    </h2>
+                    <p>
+                        <b>Nombre:</b> {{usuario['nombre']}}<br>
+                        <b>Apellido:</b> {{usuario['apellido']}}<br>
+                        <b>Email:</b> {{usuario['email']}}
+                    </p>
+                    <a href="/usuarios/{{usuario['id']}}">
+                        Ver usuario
+                    </a>
+                </div>
+                <div class="card-footer">
+                    <p class="card-subtitle">Fecha de Creación: {{ usuario['created_at'].strftime("%B %d, %Y  at %H:%M:%S") }}</p>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</body>
+</html>
